@@ -67,3 +67,49 @@ filter.
 
 
 
+
+# SVM model to classify digits
+I trained an SVM model on the images. I used a penalty
+
+
+multiplier equal to 1 (C=1),
+
+
+gaussian kernel (kernel=rbf),
+
+and varied the gamma value between the following values:
+
+
+param_grid = {'svm__gamma': [0.001, 0.01, 1.0, 10.0
+
+![bilde](https://github.com/user-attachments/assets/6d5b68f9-a767-4b90-b146-a83566f533d2)
+
+
+I trained the model on the
+images without any modification,
+after having extracted the HOG features
+after having extracted the HOG features and applied PCA to reduce the dimensionality to 500.
+
+These were the results
+
+![bilde](https://github.com/user-attachments/assets/b9180603-f4c8-47b5-ac49-acb3e3107b1c)
+
+
+The best parameters for gamma were scale in all cases
+
+It can be seen that the accuracy increases when using the HOG features to train the model. The HOG features reduce the noise in an image by being made up of the magnitude and angle of the image. The model is therefore able to find the more important patterns in the data, and more able to classify the images.
+
+It can be seen that the training time for the model increased when training the model on the HOG features. The reason the training time increases is because the dimensionality of the data increases when extracting the HOG features.
+Originally the images have a dimensionality of 784 (each image is of size 28x28=782 pixels). After extracting HOG features the dimensionality increases to 1296.
+
+PCA is used in the last run of the model. The model that uses PCA has the lowest running time. The PCA decreases the data dimensionality by combining groups of highly correlated data, into principal components, which are the new combined data points.
+
+PCA is good to use because it reduces the dimensionality of the data, which means training time decreases, but it also manages to keep the accuracy despite leaving some data out in the dimensionality reduction. The accuracy might decrease if too much information is lost in the dimensionality reduction, or increase if the noise in the data is reduced.
+
+
+
+
+
+
+
+
