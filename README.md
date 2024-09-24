@@ -86,8 +86,11 @@ param_grid = {'svm__gamma': [0.001, 0.01, 1.0, 10.0
 
 
 I trained the model on the
+
 images without any modification,
+
 after having extracted the HOG features
+
 after having extracted the HOG features and applied PCA to reduce the dimensionality to 500.
 
 These were the results
